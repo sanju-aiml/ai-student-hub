@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+html, body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Force everything to be a complete premium dark theme, both as default and under .dark */
+:root {
+  --bg-main: #060606;          /* Deepest obsidian black */
+  --bg-card: #0D0D0D;          /* Sleek black-slate dashboard card background */
+  --text-main: #F4F4F5;        /* Stark, crisp white typography */
+  --accent-gold: #FFD700;      /* Radiant liquid gold signature highlights */
+  --border-color: #1F1F1F;     /* Subtle, clean geometric grid lines */
+}
+
+.dark, [data-theme="dark"], [data-theme="light"] {
+  --bg-main: #060606;          
+  --bg-card: #0D0D0D;          
+  --text-main: #F4F4F5;        
+  --accent-gold: #FFD700;      
+  --border-color: #1F1F1F;     
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-accent-gold: var(--accent-gold);
+  --color-border-main: var(--border-color);
+}
+
+/* --- COMPLETE DARK THEME OVERRIDES FOR HARDCODED LIGHT CLASSES --- */
+
+/* Backgrounds */
+.bg-white {
+  background-color: var(--bg-card) !important;
+}
+.bg-\[\#F9F8F6\], .bg-\[\#f9f8f6\] {
+  background-color: var(--bg-main) !important;
+}
+.bg-slate-50, .bg-zinc-50, .bg-gray-50, .bg-[#F9F8F6] {
+  background-color: var(--bg-main) !important;
+}
+.bg-slate-100, .bg-zinc-100, .bg-gray-100 {
+  background-color: #1A1A1C !important;
+}
+
+/* Borders */
+.border-\[\#1A1A1A\], .border-\[\#1a1a1a\] {
+  border-color: var(--border-color) !important;
+}
+.border-zinc-200, .border-slate-200, .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+.border-zinc-300, .border-slate-300, .border-gray-300 {
+  border-color: #222225 !important;
+}
+
+/* Text Colors */
+.text-\[\#1A1A1A\], .text-\[\#1a1a1a\] {
+  color: var(--text-main) !important;
+}
+.text-zinc-800, .text-slate-800, .text-gray-800 {
+  color: #E4E4E7 !important;
+}
+.text-zinc-900, .text-slate-900, .text-gray-900 {
+  color: #F4F4F5 !important;
+}
+.text-zinc-700, .text-slate-700, .text-gray-700 {
+  color: #D4D4D8 !important;
+}
+.text-zinc-600, .text-slate-600, .text-gray-600 {
+  color: #A1A1AA !important;
+}
+.text-zinc-500, .text-slate-500, .text-gray-500 {
+  color: #71717A !important;
+}
+
+/* Opacity variants of ink-black texts */
+.text-\[\#1A1A1A\]\/10, .text-\[\#1a1a1a\]\/10 { color: rgba(244, 244, 245, 0.1) !important; }
+.text-\[\#1A1A1A\]\/20, .text-\[\#1a1a1a\]\/20 { color: rgba(244, 244, 245, 0.2) !important; }
+.text-\[\#1A1A1A\]\/30, .text-\[\#1a1a1a\]\/30 { color: rgba(244, 244, 245, 0.3) !important; }
+.text-\[\#1A1A1A\]\/40, .text-\[\#1a1a1a\]\/40 { color: rgba(244, 244, 245, 0.4) !important; }
+.text-\[\#1A1A1A\]\/50, .text-\[\#1a1a1a\]\/50 { color: rgba(244, 244, 245, 0.5) !important; }
+.text-\[\#1A1A1A\]\/60, .text-\[\#1a1a1a\]\/60 { color: rgba(244, 244, 245, 0.6) !important; }
+.text-\[\#1A1A1A\]\/70, .text-\[\#1a1a1a\]\/70 { color: rgba(244, 244, 245, 0.7) !important; }
+.text-\[\#1A1A1A\]\/80, .text-\[\#1a1a1a\]\/80 { color: rgba(244, 244, 245, 0.8) !important; }
+
+/* Opacity variants of borders */
+.border-\[\#1A1A1A\]\/10, .border-\[\#1a1a1a\]\/10 { border-color: rgba(255, 255, 255, 0.08) !important; }
+.border-\[\#1A1A1A\]\/15, .border-\[\#1a1a1a\]\/15 { border-color: rgba(255, 255, 255, 0.12) !important; }
+.border-\[\#1A1A1A\]\/20, .border-\[\#1a1a1a\]\/20 { border-color: rgba(255, 255, 255, 0.18) !important; }
+.border-\[\#1A1A1A\]\/30, .border-\[\#1a1a1a\]\/30 { border-color: rgba(255, 255, 255, 0.25) !important; }
+
+/* Opacity variants of backgrounds */
+.bg-\[\#1A1A1A\]\/5, .bg-\[\#1a1a1a\]\/5 { background-color: rgba(255, 255, 255, 0.04) !important; }
+.bg-\[\#1A1A1A\]\/10, .bg-\[\#1a1a1a\]\/10 { background-color: rgba(255, 255, 255, 0.08) !important; }
+.bg-\[\#1A1A1A\]\/20, .bg-\[\#1a1a1a\]\/20 { background-color: rgba(255, 255, 255, 0.15) !important; }
+
+/* --- ACADEMIC STUDY COMMAND CENTER - PURE WHITE TYPOGRAPHY EXTREME OVERRIDE --- */
+#study-assistant-root,
+#study-assistant-root h1,
+#study-assistant-root h2,
+#study-assistant-root h3,
+#study-assistant-root h4,
+#study-assistant-root h5,
+#study-assistant-root h6,
+#study-assistant-root p,
+#study-assistant-root span,
+#study-assistant-root div,
+#study-assistant-root label,
+#study-assistant-root li,
+#study-assistant-root a,
+#study-assistant-root input,
+#study-assistant-root textarea,
+#study-assistant-root select,
+#study-assistant-root option,
+#study-assistant-root svg {
+  color: #ffffff !important;
+  --text-main: #ffffff !important;
+}
+
+/* Ensure placeholder text uses high-contrast translucent white */
+#study-assistant-root input::placeholder,
+#study-assistant-root textarea::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Maintain black text ONLY on the active tab button which has a solid white/light-grey background */
+#study-assistant-root .bg-text-main,
+#study-assistant-root .bg-text-main *,
+#study-assistant-root button[class*="bg-text-main"],
+#study-assistant-root button[class*="bg-text-main"] * {
+  color: #060606 !important;
+}
+
+/* Custom high-contrast academic study tab buttons */
+#study-assistant-root .study-tab-btn {
+  color: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+#study-assistant-root .study-tab-btn:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+#study-assistant-root .study-tab-btn-active {
+  color: #060606 !important;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+#study-assistant-root .study-tab-btn-active,
+#study-assistant-root .study-tab-btn-active * {
+  color: #060606 !important;
+}
+
+/* Exempt the physical white resume paper page so text renders in readable deep ink-black */
+#study-assistant-root #resume-print-area,
+#study-assistant-root #resume-print-area h1,
+#study-assistant-root #resume-print-area h2,
+#study-assistant-root #resume-print-area h3,
+#study-assistant-root #resume-print-area h4,
+#study-assistant-root #resume-print-area h5,
+#study-assistant-root #resume-print-area h6,
+#study-assistant-root #resume-print-area p,
+#study-assistant-root #resume-print-area span,
+#study-assistant-root #resume-print-area div,
+#study-assistant-root #resume-print-area label,
+#study-assistant-root #resume-print-area li,
+#study-assistant-root #resume-print-area a {
+  color: #1a1a1a !important;
+}
+
+#study-assistant-root #resume-print-area {
+  background-color: #ffffff !important;
+}
+
+/* Custom sandbox selector buttons styling with high contrast and gold outline */
+#study-assistant-root .sandbox-selector-btn {
+  color: rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid transparent !important;
+  background-color: transparent !important;
+  transition: all 150ms ease-in-out;
+}
+
+#study-assistant-root .sandbox-selector-btn:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  outline: 2px solid #FFD700 !important;
+  outline-offset: -2px;
+}
+
+#study-assistant-root .sandbox-selector-btn-active {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  outline: 2px solid #FFD700 !important;
+  outline-offset: -2px;
+}
+
+/* Dropdown selections within command center dark overrides */
+#study-assistant-root select, 
+#study-assistant-root optgroup, 
+#study-assistant-root option {
+  background-color: #0D0D0D !important;
+  color: #ffffff !important;
+}
+
+/* ==================== STRICT @MEDIA PRINT STYLESHEET ==================== */
+@media print {
+  /* Hide the main workspace app sidebar, navigation buttons, controls and general page chrome */
+  body, html {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Target outer components, sidebars, headers, action panels and hide them */
+  aside, 
+  nav, 
+  header, 
+  footer, 
+  .sidebar, 
+  .nav-menu, 
+  button, 
+  select, 
+  input, 
+  textarea, 
+  [role="tablist"], 
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Make sure our parent containers don't clip the page or have shadows */
+  #root, 
+  main, 
+  .flex, 
+  .grid, 
+  #study-assistant-root {
+    display: block !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Make ONLY the physical print area visible and expand to fill page */
+  #resume-print-area {
+    visibility: visible !important;
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Enforce extreme black-and-white high contrast on all child components */
+  #resume-print-area * {
+    visibility: visible !important;
+    color: #000000 !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border-color: #000000 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Avoid page breaks inside experience blocks if possible */
+  .experience-item, 
+  .edu-item, 
+  .skills-sec {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* Sidebar slide transition */
+#sidebar {
+  width: 288px; /* 72 in tailwind is 18rem which is 288px */
+  transform: translateX(0);
+  margin-left: 0;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              margin-left 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              width 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              padding 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#sidebar.nav-collapsed {
+  width: 72px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#sidebar.collapsed {
+  transform: translateX(-100%);
+  margin-left: -288px;
+}
+
+.sidebar-sliding-content {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 300ms ease-in-out;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#sidebar.nav-collapsed .sidebar-sliding-content {
+  transform: translateX(-150%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+

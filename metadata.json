@@ -1,0 +1,8 @@
+{
+  "name": "Student AI Super Assistant",
+  "description": "A secure, privacy-focused student operating system combining Local/Remote AI capabilities, study planners, secure coding workspaces, and custom tools.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

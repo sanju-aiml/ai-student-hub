@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "StudentStreak": {
+      "title": "StudentStreak",
+      "description": "Information about a student login and check-in streak",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "User identifier"
+        },
+        "streakCount": {
+          "type": "integer",
+          "description": "The current consecutive check-in streak length"
+        },
+        "lastCheckInDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The calendar date of the last check-in in YYYY-MM-DD format"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The exact date-time when the streak was last recorded"
+        }
+      },
+      "required": ["userId", "streakCount", "lastCheckInDate", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/streaks/{userId}": {
+      "schema": "StudentStreak",
+      "description": "Per-user streak tracking document"
+    }
+  }
+}
