@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Cpu, CheckSquare, Laptop, Brain, ShieldAlert, Settings as SettingsIcon, MessageSquare, Sun, Moon, Eye, EyeOff, X, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import AIChatModule from './components/AIChatModule';
-import ProductivityModule from './components/ProductivityModule';
 import StudyAssistantModule from './components/StudyAssistantModule';
 import DeveloperWorkspaceModule from './components/DeveloperWorkspaceModule';
 import BrainTrainingModule from './components/BrainTrainingModule';
 import SecurityAuditDashboard from './components/SecurityAuditDashboard';
 import SettingsModule from './components/SettingsModule';
-import DailyCheckInWidget from './components/DailyCheckInWidget';
 
 
-type MainTab = 'ai_chat' | 'productivity' | 'study_assistant' | 'dev_workspace' | 'brain_training' | 'security_audit' | 'settings';
+type MainTab = 'ai_chat' | 'study_assistant' | 'dev_workspace' | 'brain_training' | 'security_audit' | 'settings';
 
 const navGroups = [
   {
@@ -23,7 +21,6 @@ const navGroups = [
   {
     title: "01 / Focus & Mind",
     items: [
-      { id: 'productivity', name: 'Productivity Suite' },
       { id: 'brain_training', name: 'Brain Arcade' },
     ]
   },
@@ -51,24 +48,8 @@ export default function App() {
   const [sidebarWidth, setSidebarWidth] = useState<number>(288);
   const [isResizing, setIsResizing] = useState<boolean>(false);
 
-  const [streakCount, setStreakCount] = useState<number>(() => {
-    const saved = localStorage.getItem('local_streak_count');
-    return saved ? parseInt(saved, 10) : 0;
-  });
-
   const [globalProgressTask, setGlobalProgressTask] = useState<string | null>(null);
   const [globalProgressPercentage, setGlobalProgressPercentage] = useState<number>(0);
-
-  useEffect(() => {
-    const handleStreak = (e: Event) => {
-      const customEvent = e as CustomEvent<{ streak: number }>;
-      if (customEvent.detail && customEvent.detail.streak !== undefined) {
-        setStreakCount(customEvent.detail.streak);
-      }
-    };
-    window.addEventListener('streak-updated', handleStreak);
-    return () => window.removeEventListener('streak-updated', handleStreak);
-  }, []);
 
   useEffect(() => {
     const handleProgress = (e: Event) => {
@@ -218,11 +199,6 @@ export default function App() {
           }`}>
             <h1 className="text-3xl font-serif font-black italic text-text-main tracking-tight whitespace-nowrap flex items-center">
               Student AI
-              {streakCount > 0 && (
-                <span className="ml-2 inline-flex items-center gap-0.5 bg-accent-gold/10 border border-accent-gold/20 text-accent-gold font-mono text-[10px] font-bold px-1.5 py-0.5 animate-pulse rounded-none" title="Claimed Daily Check-in Streak">
-                  🔥 {streakCount}
-                </span>
-              )}
             </h1>
             <span className="text-[9px] font-mono tracking-[0.2em] font-bold text-text-main/60 block mt-1 uppercase whitespace-nowrap">The Intelligence OS v2.4</span>
           </div>
@@ -333,8 +309,6 @@ export default function App() {
                 </p>
               </div>
 
-              <DailyCheckInWidget />
-
               <div className="p-3 bg-[#1A1A1A]/5 dark:bg-zinc-900 border border-[#1A1A1A]/10 dark:border-zinc-800 font-mono text-[9px] text-[#1A1A1A]/80 dark:text-zinc-300">
                 <span className="text-[8px] font-bold text-[#1A1A1A]/40 dark:text-zinc-500 uppercase tracking-wider block mb-2">
                   COCKPIT PERFORMANCE
@@ -385,7 +359,6 @@ export default function App() {
             onClearInitialPrompt={() => setInjectedPrompt('')}
           />
         )}
-        {activeTab === 'productivity' && <ProductivityModule />}
         {activeTab === 'study_assistant' && <StudyAssistantModule />}
         {activeTab === 'dev_workspace' && <DeveloperWorkspaceModule />}
         {activeTab === 'brain_training' && <BrainTrainingModule />}
